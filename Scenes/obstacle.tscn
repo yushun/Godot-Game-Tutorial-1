@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3ak4oja0swhw"]
+[gd_scene load_steps=9 format=3 uid="uid://d3ak4oja0swhw"]
 
 [ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_w1mag"]
+[ext_resource type="AudioStream" uid="uid://bqy1qpcwccf86" path="res://Assets/Sounds/thump.mp3" id="2_4lxcc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vb24q"]
 albedo_color = Color(0, 0, 0, 1)
@@ -37,7 +38,7 @@ rings = 10
 
 [node name="Obstacle" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 mass = 2000.0
 gravity_scale = 30.0
 contact_monitor = true
@@ -64,5 +65,8 @@ explosiveness = 0.35
 randomness = 0.4
 process_material = SubResource("ParticleProcessMaterial_wabb2")
 draw_pass_1 = SubResource("SphereMesh_8vijn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_4lxcc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

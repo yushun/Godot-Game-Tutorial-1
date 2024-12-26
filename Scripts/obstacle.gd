@@ -5,6 +5,7 @@ extends RigidBody3D
 @export var fall_down_distance = 25
 
 @onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var player
 var on_ground = false
@@ -25,4 +26,5 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body is Floor and !on_ground:
 		gpu_particles_3d.emitting = true
+		audio_stream_player_3d.play()
 		on_ground = true
