@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3ak4oja0swhw"]
+[gd_scene load_steps=8 format=3 uid="uid://d3ak4oja0swhw"]
 
 [ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_w1mag"]
 
@@ -12,11 +12,36 @@ material = SubResource("StandardMaterial3D_vb24q")
 [sub_resource type="BoxShape3D" id="BoxShape3D_gh65y"]
 size = Vector3(1.99841, 1, 1)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wabb2"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(4, 1, 1)
+direction = Vector3(0, 2, -1)
+spread = 10.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+linear_accel_min = 20.0
+linear_accel_max = 30.0
+scale_min = 0.5
+color = Color(0.125911, 0.125911, 0.125911, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo06i"]
+albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8vijn"]
+material = SubResource("StandardMaterial3D_eo06i")
+radius = 0.05
+height = 0.1
+radial_segments = 30
+rings = 10
+
 [node name="Obstacle" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 5
-mass = 200.0
-gravity_scale = 3.0
+mass = 2000.0
+gravity_scale = 30.0
+contact_monitor = true
+max_contacts_reported = 1
 angular_damp_mode = 1
 angular_damp = 30.0
 script = ExtResource("1_w1mag")
@@ -28,3 +53,16 @@ mesh = SubResource("BoxMesh_lawip")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00262451, 0, 0)
 shape = SubResource("BoxShape3D_gh65y")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.250889, 0, 0, 0, 0.0154446, 0, 0, 0, 0.0157539, 0, -0.477461, -0.510907)
+emitting = false
+amount = 20
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.35
+randomness = 0.4
+process_material = SubResource("ParticleProcessMaterial_wabb2")
+draw_pass_1 = SubResource("SphereMesh_8vijn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

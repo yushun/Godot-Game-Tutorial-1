@@ -1,10 +1,14 @@
 extends RigidBody3D
 
+
 @export var FALL_DOWN_HEIGHT = 8
-@export var fall_down_distance = 30
+@export var fall_down_distance = 25
+
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
 var player
-
+var on_ground = false
+ 
 func _ready() -> void:
 	gravity_scale = 0
 	position.y = FALL_DOWN_HEIGHT
@@ -17,3 +21,8 @@ func _process(delta: float) -> void:
 	
 	if distance_between < fall_down_distance:
 		gravity_scale = 1
+
+func _on_body_entered(body: Node) -> void:
+	if body is Floor and !on_ground:
+		gpu_particles_3d.emitting = true
+		on_ground = true
