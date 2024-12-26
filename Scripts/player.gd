@@ -1,6 +1,8 @@
 extends RigidBody3D
 
 
+class_name Player
+
 @export var sync_position_node: Node3D
 @export var camera_z_offset = 5
 

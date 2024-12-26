@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbd6vn8ql4jdy"]
+
+[ext_resource type="Script" path="res://Scripts/finish_line.gd" id="1_25qb3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vnx1r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x325g"]
+albedo_color = Color(0.956863, 0.0313726, 0.027451, 1)
+emission_enabled = true
+emission = Color(0.972549, 0, 0, 1)
+emission_energy_multiplier = 3.14
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hu47o"]
+albedo_color = Color(0, 0.682353, 0.0431373, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 3.14
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8s3o7"]
+size = Vector3(7.15796, 1.07388, 1)
+
+[node name="FinishLine" type="Node3D"]
+script = ExtResource("1_25qb3")
+
+[node name="LeftColumn" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 7.14387, 1.52588e-05, -0.00012207)
+mesh = SubResource("CylinderMesh_vnx1r")
+surface_material_override/0 = SubResource("StandardMaterial3D_x325g")
+
+[node name="RightColumn" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, -0.000385344)
+mesh = SubResource("CylinderMesh_vnx1r")
+surface_material_override/0 = SubResource("StandardMaterial3D_hu47o")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.3, 0, 0, 0, 1, 0.640998, -0.566, -0.02)
+collision_layer = 8
+priority = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 2.39548, 0, 0, 0, 1, 2.89917, 0.241791, -0.0200183)
+shape = SubResource("BoxShape3D_8s3o7")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
