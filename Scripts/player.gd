@@ -8,7 +8,7 @@ var vertical_speed_increment = 0.2
 var horizontal_speed_increment = 0.2
 var input: Vector3 = Vector3.ZERO
 
-const JUMP_FORCE = 5
+const JUMP_FORCE = 8
 
 var can_jump = true
 

@@ -9,7 +9,7 @@ albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wu127"]
 
-[node name="Player" type="RigidBody3D"]
+[node name="Player" type="RigidBody3D" groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 contact_monitor = true
@@ -20,7 +20,7 @@ script = ExtResource("1_6ksqj")
 mesh = SubResource("BoxMesh_m5uf4")
 surface_material_override/0 = SubResource("StandardMaterial3D_d4a5x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
 shape = SubResource("BoxShape3D_wu127")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
