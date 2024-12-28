@@ -2,6 +2,7 @@ extends Node
 
 
 @onready var finish_line: FinishLine = $"../FinishLine" as FinishLine
+@onready var ui = $"../UI" as UI
 
 var player: Player
 
@@ -13,3 +14,5 @@ func on_level_won():
 	player.linear_velocity = Vector3.ZERO
 	player.freeze =true
 	print("You Won!")
+	ui.on_level_finished()
+	

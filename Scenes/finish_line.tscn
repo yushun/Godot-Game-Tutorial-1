@@ -23,12 +23,12 @@ size = Vector3(7.15796, 1.07388, 1)
 script = ExtResource("1_25qb3")
 
 [node name="LeftColumn" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 7.14387, 1.52588e-05, -0.00012207)
+transform = Transform3D(0.2, 0, 0, 0, 4, 0, 0, 0, 0.2, 7.144, 1, 0)
 mesh = SubResource("CylinderMesh_vnx1r")
 surface_material_override/0 = SubResource("StandardMaterial3D_x325g")
 
 [node name="RightColumn" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, -0.000385344)
+transform = Transform3D(0.2, 0, 0, 0, 4, 0, 0, 0, 0.2, 0, 1, 0)
 mesh = SubResource("CylinderMesh_vnx1r")
 surface_material_override/0 = SubResource("StandardMaterial3D_hu47o")
 

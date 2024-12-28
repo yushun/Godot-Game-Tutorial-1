@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsajao42whu01"]
+[gd_scene load_steps=8 format=3 uid="uid://dsajao42whu01"]
 
 [ext_resource type="PackedScene" uid="uid://c6wp3uy63afuv" path="res://Scenes/floor.tscn" id="1_0n7vs"]
 [ext_resource type="PackedScene" uid="uid://casllv2y11oh0" path="res://Scenes/player.tscn" id="2_1ythj"]
 [ext_resource type="PackedScene" uid="uid://d3ak4oja0swhw" path="res://Scenes/obstacle.tscn" id="3_2i84a"]
 [ext_resource type="PackedScene" uid="uid://cbd6vn8ql4jdy" path="res://Scenes/finish_line.tscn" id="4_obu8m"]
 [ext_resource type="Script" path="res://Scripts/game_manger.gd" id="5_ug7ip"]
+[ext_resource type="PackedScene" uid="uid://dhgrx1lrelrhc" path="res://Scenes/ui.tscn" id="6_ot32y"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="7_7j322"]
 
 [node name="main" type="Node"]
 
@@ -13,7 +15,9 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.642788, -0.586824, 0.492404, 0, 0.642788, 0.766044, -0.766044, -0.492404, 0.413176, 9, 14, -92)
+transform = Transform3D(0.642788, -0.586824, 0.492404, 0, 0.642788, 0.766044, -0.766044, -0.492404, 0.413176, 67.2062, 78.7398, 24.7957)
+shadow_enabled = true
+shadow_normal_bias = 0.055
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -3.69465e-08, 7.92319e-08, 0, 0.906308, 0.422618, -8.74228e-08, 0.422618, -0.906308, -0.5, 5, -105)
@@ -82,3 +86,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63698, 1.70159, 98.8085)
 
 [node name="GameManger" type="Node" parent="."]
 script = ExtResource("5_ug7ip")
+
+[node name="UI" parent="." instance=ExtResource("6_ot32y")]
+script = ExtResource("7_7j322")
