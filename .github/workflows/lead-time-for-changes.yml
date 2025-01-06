@@ -1,4 +1,7 @@
+name: lead-time-for-change
 on: [push]
-uses: DeveloperMetrics/lead-time-for-changes@main
-with:
-  workflows: 'CI'
+jobs:
+  lead-time:
+    uses: DeveloperMetrics/lead-time-for-changes@main
+    with:
+      workflows: 'CI'
