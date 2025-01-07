@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Lead Time for Changes
-        uses: DeveloperMetrics/lead-time-for-changes@v1
+        uses: DeveloperMetrics/lead-time-for-changes@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           deployment_event: push # or pull_request
