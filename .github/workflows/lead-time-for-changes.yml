@@ -1,0 +1,22 @@
+name: Lead Time for Changes
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+jobs:
+  lead-time:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Lead Time for Changes
+        uses: DeveloperMetrics/lead-time-for-changes@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deployment_event: push # or pull_request
+          deployment_ref: refs/heads/main # or your main branch name
